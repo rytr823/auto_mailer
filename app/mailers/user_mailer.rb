@@ -8,6 +8,6 @@ class UserMailer < ApplicationMailer
   def trends(user)
     @user = user
 
-    mail to: "#{@user.email}", subject: "今月の業界動向"
+    mail to: @user.email, subject: "今月の業界動向"
   end
 end
