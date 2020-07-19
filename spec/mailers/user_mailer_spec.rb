@@ -2,17 +2,17 @@ require 'rails_helper'
 
 describe UserMailer, type: :mailer do
   describe '#trebds(user)' do
-    users = User.all 
     subject(:mail) do
-      users.earh do |user|
+      @users = User.all 
+      @users.each do |user|
       UserMailer.trends(user)   
       described_class.trends(user).deliver_now
       ActionMailer::Base.deliveries.last
       end
     end
 
-    context "when trends" do
-      it {expect(mail.form.first).to eq('<rytr823@gmail.com>')}
+    context "when trends(user)" do
+      it {expect(mail.from.first).to eq('<rytr823@gmail.com>')}
       it {expect(mail.to.first).to eq('rh_mc_bb@yahoo.co.jp')}
       it {expect(mail.subject).tp eq("今月の業界動向")}
     end
