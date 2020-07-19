@@ -6,9 +6,8 @@ class UserMailer < ApplicationMailer
   #
   def trends(user)
     @user = user
-    
-    binding.pry
-    
+    @image = 'sample.jpg'
+    attachments.inline[@image] = File.read('./tmp/sample.jpg')
     mail to: @user.email, subject: "今月の業界動向"
   end
 end
