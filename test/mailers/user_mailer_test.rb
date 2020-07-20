@@ -9,8 +9,8 @@ class UserMailerTest < ActionMailer::TestCase
     end
 
     assert_equal 'Trends', mail.subject
-    assert_equal ['rh_mc_bb@yahoo.co.jp'], mail.to
-    assert_equal ['rytr823@gmail.com'], mail.from
+    assert_equal [ENV['YAHOO_EMAIL']], mail.to
+    assert_equal [ENV['EMAIL_HIDDEN']], mail.from
     # assert_match 'Hi', mail.body.encoded
   end
 end

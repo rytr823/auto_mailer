@@ -12,7 +12,7 @@ describe UserMailer, type: :mailer do
     end
 
     context "when trends(user)" do
-      it {expect(mail.from.first).to eq('<rytr823@gmail.com>')}
+      it {expect(mail.from.first).to eq(ENV['EMAIL_HIDDEN'])}
       it {expect(mail.to.first).to eq('rh_mc_bb@yahoo.co.jp')}
       it {expect(mail.subject).tp eq("今月の業界動向")}
     end
