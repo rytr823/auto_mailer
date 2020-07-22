@@ -36,14 +36,14 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    port:                 587,
-    address:              'smtp.gmail.com',
-    domain:               'smtp.gmail.com',
-    user_name:            ENV['EMAIL_HIDDEN'],
-    password:             ENV['PASSWORD_HIDDEN'],
-    authentication:       'login',
-    enable_starttls_auto: true
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['SENDGRID_USERNAME'], # Send Gridから送られてきているユーザ名
+    :password => ENV['SENDGRID_PASSWORD'], # ユーザ名に対応するパスワード
+    :domain => 'heroku.com', # Send Grid登録時に設定した各自のドメイン名
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
   }
   
 
